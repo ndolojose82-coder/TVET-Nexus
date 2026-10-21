@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cheatsheets |TVET STUDY HUB</title>
+    <link rel="stylesheet" href="cheat.css">
+</head>
+<body>
+
+    <nav>
+    <a class="brand" href="index.html">TVET Nexus</a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cheatsheets.html" aria-current="page">Cheat Sheets</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+</nav>
+    <main class="wide">
+    <h1>ICT Cheat Sheets</h1>
+    <p>
+        Quick references for the Module 1 and Module 2 units. Use the search box to
+        find a topic, or jump to a sheet below. These are summaries for revision, so
+        always follow your lecturer's notes for exam answers.
+    </p>
+
+ 
+
+    <ul class="links jump">
+        <li><a href="#c">C programming</a></li>
+        <li><a href="#sql">SQL</a></li>
+        <li><a href="#excel">Excel</a></li>
+        <li><a href="#shortcuts">Shortcuts</a></li>
+        <li><a href="#oop">OOP</a></li>
+        <li><a href="#vb">Visual Basic</a></li>
+        <li><a href="#os">Operating systems</a></li>
+        <li><a href="#maths">Computational maths</a></li>
+        <li><a href="#stats">Statistics</a></li>
+        <li><a href="#sad">System analysis</a></li>
+    </ul>
+
+  <!--structured programming-->
+    <div class="sheet" >
+        <h2>C programming (Structured Programming)</h2>
+        <h3>Program structure</h3>
+        <pre><code>#include &lt;stdio.h&gt;
+
+        int main(void) {
+        printf("Hello, world\n");
+        return 0;
+    }</code></pre>
+
+
+        <h3>Data types and format codes</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Type</th><th>Stores</th><th>Format code</th></tr>
+            <tr><td><code>int</code></td><td>Whole numbers</td><td><code>%d</code></td></tr>
+            <tr><td><code>float</code></td><td>Decimal numbers</td><td><code>%f</code></td></tr>
+            <tr><td><code>double</code></td><td>Larger decimals</td><td><code>%f</code> in printf, <code>%lf</code> in scanf</td></tr>
+            <tr><td><code>char</code></td><td>One character</td><td><code>%c</code></td></tr>
+            <tr><td><code>char name[20]</code></td><td>Text (string)</td><td><code>%s</code></td></tr>
+        </table>
+    </div>
+
+        <h3>Operators</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Group</th><th>Operators</th></tr>
+            <tr><td>Arithmetic</td><td><code>+ - * / %</code> (% gives the remainder)</td></tr>
+            <tr><td>Relational</td><td><code>== != &lt; &gt; &lt;= &gt;=</code></td></tr>
+            <tr><td>Logical</td><td><code>&amp;&amp;</code> (and), <code>||</code> (or), <code>!</code> (not)</td></tr>
+            <tr><td>Assignment</td><td><code>= += -= *= /=</code></td></tr>
+            <tr><td>Increment / decrement</td><td><code>++ --</code></td></tr>
+        </table>
+    </div>
+
+        <h3>Control structures</h3>
+
+            <pre><code>if (marks &gt;= 70) {
+            printf("Distinction\n");
+        } else if (marks &gt;= 50) {
+            printf("Pass\n");
+        } else {
+            printf("Fail\n");
+        }
+
+        for (int i = 1; i &lt;= 5; i++) { printf("%d\n", i); }
+
+        while (n &gt; 0) { n--; }          /* checks first */
+        do { n++; } while (n &lt; 5);     /* runs at least once */
+
+        switch (choice) {
+            case 1: printf("One\n"); break;
+            default: printf("Other\n");
+        }</code>
+        </pre>
+
+        <h3>Functions, input and arrays</h3>
+            <pre><code>int add(int a, int b) { return a + b; }
+
+            int n;
+            scanf("%d", &amp;n);              /* & is needed for numbers */
+
+            int marks[5] = {70, 65, 80, 55, 90};
+            printf("%d", marks[0]);  </code>
+            </pre>
+
+        <h3>Common mistakes</h3>
+        <ul>
+            <li>Using <code>=</code> (assign) instead of <code>==</code> (compare) inside an <code>if</code>.</li>
+            <li>Forgetting the <code>&amp;</code> in <code>scanf</code> for numbers.</li>
+            <li>Array positions start at 0, so <code>marks[5]</code> is outside a 5-element array.</li>
+            <li>Integer division drops the decimal part: <code>5 / 2</code> is <code>2</code>.</li>
+            <li>Missing semicolon <code>;</code> at the end of a statement.</li>
+        </ul>
+    </div>
+<!--database/postresql-->
+    <div class="sheet" id="sql">
+                <h2>SQL (Database Management)</h2>
+        <pre><code>CREATE TABLE students (
+            id INT PRIMARY KEY,
+            name VARCHAR(50),
+            marks INT
+        );
+
+        INSERT INTO students (id, name, marks) VALUES (1, 'Amina', 78);
+
+        SELECT name, marks FROM students
+        WHERE marks &gt; 70
+        ORDER BY marks DESC;
+
+        UPDATE students SET marks = 80 WHERE id = 1;
+        DELETE FROM students WHERE id = 1;
+
+        ALTER TABLE students ADD email VARCHAR(100);
+        DROP TABLE students;</code>
+        </pre>
+        <h3>Clause order in a SELECT</h3>
+        <p><code>SELECT</code> &rarr; <code>FROM</code> &rarr; <code>WHERE</code> &rarr; <code>GROUP BY</code> &rarr; <code>HAVING</code> &rarr; <code>ORDER BY</code></p>
+        <h3>Aggregate functions and joins</h3>
+      <pre><code>SELECT COUNT(*), AVG(marks), MAX(marks), MIN(marks), SUM(marks)
+            FROM students;
+
+            SELECT course, COUNT(*) FROM students
+            GROUP BY course HAVING COUNT(*) &gt; 5;
+
+            SELECT s.name, c.title
+            FROM students s
+            INNER JOIN courses c ON s.course_id = c.id;</code>
+     </pre>
+
+        <h3>Key ideas</h3>
+        <div class="table-wrap"><table>
+            <tr><th>Term</th><th>Meaning</th></tr>
+            <tr><td>DDL</td><td>Defines structure: CREATE, ALTER, DROP</td></tr>
+            <tr><td>DML</td><td>Works with data: INSERT, UPDATE, DELETE, SELECT</td></tr>
+            <tr><td>Primary key</td><td>Uniquely identifies each row; cannot be empty or repeated</td></tr>
+            <tr><td>Foreign key</td><td>A field that refers to the primary key of another table</td></tr>
+            <tr><td>1NF</td><td>Every field holds one value (no repeating groups)</td></tr>
+            <tr><td>2NF</td><td>In 1NF and no partial dependency on part of a composite key</td></tr>
+            <tr><td>3NF</td><td>In 2NF and no transitive dependency between non-key fields</td></tr>
+        </table>
+    </div>
+    </div>
+
+<!--excel formulas-->
+    <div class="sheet" id="excel">
+        <h2>Excel formulas (Computer Application)</h2>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Function</th><th>What it does</th><th>Example</th></tr>
+            <tr><td>SUM</td><td>Adds numbers</td><td><code>=SUM(A1:A10)</code></td></tr>
+            <tr><td>AVERAGE</td><td>Mean of numbers</td><td><code>=AVERAGE(B2:B20)</code></td></tr>
+            <tr><td>MAX / MIN</td><td>Largest / smallest</td><td><code>=MAX(C1:C30)</code></td></tr>
+            <tr><td>COUNT</td><td>Counts cells with numbers</td><td><code>=COUNT(A1:A10)</code></td></tr>
+            <tr><td>COUNTA</td><td>Counts cells that are not empty</td><td><code>=COUNTA(A1:A10)</code></td></tr>
+            <tr><td>IF</td><td>Chooses a result by a test</td><td><code>=IF(B2&gt;=50,"Pass","Fail")</code></td></tr>
+            <tr><td>COUNTIF</td><td>Counts cells that meet a rule</td><td><code>=COUNTIF(B2:B20,"&gt;70")</code></td></tr>
+            <tr><td>SUMIF</td><td>Adds cells that meet a rule</td><td><code>=SUMIF(A2:A20,"Nairobi",B2:B20)</code></td></tr>
+            <tr><td>VLOOKUP</td><td>Finds a value in the first column and returns another column</td><td><code>=VLOOKUP(A2,E2:G20,3,FALSE)</code></td></tr>
+            <tr><td>ROUND</td><td>Rounds a number</td><td><code>=ROUND(A1,2)</code></td></tr>
+            <tr><td>TODAY</td><td>Today's date</td><td><code>=TODAY()</code></td></tr>
+        </table>
+    </div>
+        <h3>Cell references</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Type</th><th>Example</th><th>When copied</th></tr>
+            <tr><td>Relative</td><td><code>A1</code></td><td>Changes to match the new position</td></tr>
+            <tr><td>Absolute</td><td><code>$A$1</code></td><td>Never changes</td></tr>
+            <tr><td>Mixed</td><td><code>$A1</code> or <code>A$1</code></td><td>Only the part without $ changes</td></tr>
+        </table>
+    </div>
+
+        <h3>Common error messages</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Error</th><th>Usual cause</th></tr>
+            <tr><td><code>#DIV/0!</code></td><td>Dividing by zero or an empty cell</td></tr>
+            <tr><td><code>#NAME?</code></td><td>Misspelled function or name</td></tr>
+            <tr><td><code>#VALUE!</code></td><td>Wrong type of value, such as text in a calculation</td></tr>
+            <tr><td><code>#REF!</code></td><td>A referenced cell was deleted</td></tr>
+            <tr><td><code>#N/A</code></td><td>Lookup value not found</td></tr>
+        </table>
+    </div>
+    </div>
+
+<!--keyboard shortcuts-->
+    <div class="sheet" id="shortcuts">
+        <h2>Keyboard shortcuts (Windows)</h2>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Shortcut</th><th>Action</th></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>C</kbd> / <kbd>X</kbd> / <kbd>V</kbd></td><td>Copy / cut / paste</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>Z</kbd> / <kbd>Y</kbd></td><td>Undo / redo</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>Save</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>P</kbd></td><td>Print</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>A</kbd></td><td>Select all</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd> / <kbd>H</kbd></td><td>Find / replace</td></tr>
+        </table>
+    </div>
+
+<!--word-->
+        <h3>Word</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Shortcut</th><th>Action</th></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd></td><td>Bold / italic / underline</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>L</kbd> / <kbd>E</kbd> / <kbd>R</kbd> / <kbd>J</kbd></td><td>Align left / center / right / justify</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td><td>Page break</td></tr>
+            <tr><td><kbd>F7</kbd></td><td>Spelling and grammar check</td></tr>
+        </table>
+    </div>
+
+<!--Excel-->
+        <h3>Excel</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Shortcut</th><th>Action</th></tr>
+            <tr><td><kbd>F2</kbd></td><td>Edit the selected cell</td></tr>
+            <tr><td><kbd>F4</kbd></td><td>Switch a reference between relative and absolute</td></tr>
+            <tr><td><kbd>Alt</kbd> + <kbd>=</kbd></td><td>AutoSum</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>;</kbd></td><td>Insert today's date</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>1</kbd></td><td>Format cells</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd></td><td>Turn filters on or off</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>Home</kbd></td><td>Go to cell A1</td></tr>
+        </table>
+    </div>
+    </div>
+
+    <!--object oriented programming-->
+    <div class="sheet" id="oop">
+        <h2>Object oriented programming</h2>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Concept</th><th>Meaning</th></tr>
+            <tr><td>Class</td><td>A blueprint that defines properties and methods</td></tr>
+            <tr><td>Object</td><td>An instance created from a class</td></tr>
+            <tr><td>Encapsulation</td><td>Keeping data and the code that uses it together, and hiding the data with private access</td></tr>
+            <tr><td>Inheritance</td><td>A class takes on the properties and methods of another class</td></tr>
+            <tr><td>Polymorphism</td><td>The same method name behaves differently for different objects</td></tr>
+            <tr><td>Abstraction</td><td>Showing only what is needed and hiding the details</td></tr>
+            <tr><td>Constructor</td><td>A special method that runs when an object is created</td></tr>
+            <tr><td>Overloading</td><td>Same method name, different parameters, in one class</td></tr>
+            <tr><td>Overriding</td><td>A subclass replaces a method it inherited</td></tr>
+            <tr><td>Access modifiers</td><td><code>public</code> (anyone), <code>private</code> (own class only), <code>protected</code> (own class and subclasses)</td></tr>
+        </table>
+    </div>
+    </div>
+
+    <!--visual programming-->
+    <div class="sheet" id="vb">
+        <h2>Visual Basic (Visual Programming)</h2>
+  <pre>
+            <code>Dim age As Integer = 20
+        Dim name As String = "Amina"
+
+        If age &gt;= 18 Then
+            MessageBox.Show("Adult")
+        Else
+            MessageBox.Show("Minor")
+        End If
+
+        For i = 1 To 5
+            ListBox1.Items.Add(i)
+        Next
+
+        Do While age &lt; 25
+            age += 1
+        Loop
+
+        Select Case age
+            Case 20
+                MessageBox.Show("Twenty")
+            Case Else
+                MessageBox.Show("Other")
+        End Select
+
+        Dim total As Integer = CInt(TextBox1.Text) + 5</code>
+        </pre>
+
+        <h3>Common controls</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Control</th><th>Use</th></tr>
+            <tr><td>Button</td><td>Runs code when clicked</td></tr>
+            <tr><td>Label</td><td>Shows fixed text</td></tr>
+            <tr><td>TextBox</td><td>Lets the user type input</td></tr>
+            <tr><td>ListBox / ComboBox</td><td>Shows a list of choices</td></tr>
+            <tr><td>CheckBox / RadioButton</td><td>Tick options / choose one option</td></tr>
+            <tr><td>Timer</td><td>Runs code at set time intervals</td></tr>
+        </table>
+     </div>
+        <p><strong>Property</strong> = a setting of a control (<code>Text</code>, <code>Enabled</code>, <code>Visible</code>). <strong>Event</strong> = something that happens to it (<code>Click</code>, <code>TextChanged</code>, <code>Load</code>). A <code>Function</code> returns a value, a <code>Sub</code> does not.</p>
+    </div>
+
+ <!--operating system-->
+    <div class="sheet" id="os">
+        <h2>Operating systems</h2>
+        <h3>Main functions</h3>
+        <p>Process management, memory management, file management, device management, security, and the user interface.</p>
+        <h3>Process states</h3>
+        <p>New &rarr; Ready &rarr; Running &rarr; Waiting (blocked) &rarr; Terminated. A running process goes back to Ready when its time slice ends.</p>
+
+        <h3>CPU scheduling</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Algorithm</th><th>How it picks the next process</th></tr>
+            <tr><td>FCFS</td><td>First come, first served, in order of arrival</td></tr>
+            <tr><td>SJF</td><td>Shortest job first, the one with the shortest burst time</td></tr>
+            <tr><td>Round Robin</td><td>Each process gets a fixed time slice in turn</td></tr>
+            <tr><td>Priority</td><td>The highest priority process runs first</td></tr>
+        </table>
+    </div>
+
+        <h3>Deadlock: four conditions (all must hold)</h3>
+        <p>Mutual exclusion, hold and wait, no pre-emption, circular wait.</p>
+        <h3>Memory management</h3>
+
+        <div class="table-wrap">
+            <table>
+            <tr><th>Term</th><th>Meaning</th></tr>
+            <tr><td>Paging</td><td>Memory is split into fixed-size blocks (pages and frames)</td></tr>
+            <tr><td>Segmentation</td><td>Memory is split into variable-size logical parts, such as code and data</td></tr>
+            <tr><td>Virtual memory</td><td>Disk space used as an extension of RAM</td></tr>
+            <tr><td>Internal fragmentation</td><td>Wasted space inside an allocated block</td></tr>
+            <tr><td>External fragmentation</td><td>Free memory split into pieces too small to use</td></tr>
+        </table>
+    </div>
+    </div>
+<!--binary-->
+    <div class="sheet" id="maths">
+        <h2>Computational mathematics</h2>
+        <h3>Number systems 0 to 15</h3>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Decimal</th><th>Binary</th><th>Octal</th><th>Hex</th></tr>
+            <tr><td>0</td><td>0000</td><td>0</td><td>0</td></tr>
+            <tr><td>1</td><td>0001</td><td>1</td><td>1</td></tr>
+            <tr><td>2</td><td>0010</td><td>2</td><td>2</td></tr>
+            <tr><td>3</td><td>0011</td><td>3</td><td>3</td></tr>
+            <tr><td>4</td><td>0100</td><td>4</td><td>4</td></tr>
+            <tr><td>5</td><td>0101</td><td>5</td><td>5</td></tr>
+            <tr><td>6</td><td>0110</td><td>6</td><td>6</td></tr>
+            <tr><td>7</td><td>0111</td><td>7</td><td>7</td></tr>
+            <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+            <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+            <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
+            <tr><td>11</td><td>1011</td><td>13</td><td>B</td></tr>
+            <tr><td>12</td><td>1100</td><td>14</td><td>C</td></tr>
+            <tr><td>13</td><td>1101</td><td>15</td><td>D</td></tr>
+            <tr><td>14</td><td>1110</td><td>16</td><td>E</td></tr>
+            <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
+        </table>
+    </div>
+
+        <p><strong>Powers of 2:</strong> 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024.</p>
+        <p><strong>Binary to decimal:</strong> add the place values where there is a 1. <strong>Decimal to binary:</strong> divide by 2 repeatedly and read the remainders from the bottom up.</p>
+        <h3>Logic gates (truth table)</h3>
+
+        <div class="table-wrap">
+            <table>
+            <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>XOR</th><th>NAND</th><th>NOR</th></tr>
+            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+            <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+        </table>
+    </div>
+
+        <p>NOT flips a single input: NOT 0 = 1 and NOT 1 = 0.</p>
+        <h3>Boolean laws</h3>
+        <ul>
+            <li>A AND 0 = 0, A AND 1 = A, A AND A = A, A AND (NOT A) = 0</li>
+            <li>A OR 0 = A, A OR 1 = 1, A OR A = A, A OR (NOT A) = 1</li>
+            <li>De Morgan: NOT (A AND B) = (NOT A) OR (NOT B), and NOT (A OR B) = (NOT A) AND (NOT B)</li>
+        </ul>
+        <h3>Sets</h3>
+        <p>Union <code>A &cup; B</code>: in A or B. Intersection <code>A &cap; B</code>: in both. Complement: not in A. A set lists each element once.</p>
+    </div>
+
+<!--statistics,probability and quantitive analysis-->
+    <div class="sheet" id="stats">
+        <h2>Statistics and probability (Quantitative Analysis)</h2>
+        <div class="table-wrap">
+            <table>
+            <tr><th>Measure</th><th>Formula or meaning</th></tr>
+            <tr><td>Mean</td><td>Sum of values &divide; number of values</td></tr>
+            <tr><td>Median</td><td>Middle value when ordered (average the two middle values if the count is even)</td></tr>
+            <tr><td>Mode</td><td>Most frequent value</td></tr>
+            <tr><td>Range</td><td>Largest value &minus; smallest value</td></tr>
+            <tr><td>Variance</td><td>Average of the squared differences from the mean</td></tr>
+            <tr><td>Standard deviation</td><td>Square root of the variance. For a sample, divide by n &minus; 1</td></tr>
+        </table>
+    </div>
+
+        <h3>Probability</h3>
+        <ul>
+            <li>P(event) = favourable outcomes &divide; total outcomes, and always lies between 0 and 1.</li>
+            <li>P(not A) = 1 &minus; P(A).</li>
+            <li>Mutually exclusive events: P(A or B) = P(A) + P(B).</li>
+            <li>Independent events: P(A and B) = P(A) &times; P(B).</li>
+        </ul>
+        <p><strong>Example:</strong> mean of 4, 6, 8, 10, 12 is 40 &divide; 5 = 8.</p>
+    </div>
+
+    <div class="sheet" id="sad">
+        <h2>Systems analysis and design</h2>
+        <h3>System development life cycle (SDLC)</h3>
+        <p>Planning and feasibility &rarr; Analysis &rarr; Design &rarr; Implementation &rarr; Testing &rarr; Maintenance.</p>
+        
+            <tr><th>Topic</th><th>Key points</th></tr>
+            <tr><td>Feasibility types</td><td>Technical, economic, operational, schedule (and legal)</td></tr>
+            <tr><td>Fact-finding</td><td>Interviews, questionnaires, observation, document review</td></tr>
+            <tr><td>Changeover methods</td><td>Direct, parallel, phased, pilot</td></tr>
+            <tr><td>Waterfall model</td><td>Each phase finishes before the next begins</td></tr>
+            <tr><td>Prototyping</td><td>Build a working sample early and improve it with user feedback</td></tr>
+            <tr><td>Data flow diagram</td><td>Shows processes, data stores, external entities and the data flows between them</td></tr>
+            <tr><td>ER diagram</td><td>Shows entities, attributes and relationships</td></tr>
+        </table></div>
+    </div>
+</main>
+
+<!--footer-->
+<footer>
+    <p>&copy; 2026 TVET Nexus. All rights reserved.</p>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+</footer>
+</body>
+</html>

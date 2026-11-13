@@ -92,3 +92,6 @@ body{
          align-items: stretch;
     }
 }
+::placeholder{
+    color: black;
+}

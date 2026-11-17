@@ -7,6 +7,9 @@ body{
    background-color:#e6ecf2;
     width:100vw;
     color: #e6ecf2;
+    margin: 0;
+   width: 100%;
+   overflow-x: hidden;
     
 }
 .navbar{
